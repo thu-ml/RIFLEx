@@ -1,6 +1,6 @@
 
 <div align="center">
-
+<img src='assets/riflex.png' style="height:100px"></img>
 <h1>RIFLEx: A Free Lunch for Length Extrapolation in
 Video Diffusion Transformers</h1>
 
@@ -24,7 +24,6 @@ Video Diffusion Transformers</h1>
 </div>
 
 ---
-
 
 ## RIFLEx Code
 RIFLEx only adds a single line of code on the original [1D RoPE](https://github.com/huggingface/diffusers/blob/9c7e205176c30b27c5f44ec7650a8dfcc12dde86/src/diffusers/models/embeddings.py#L1105).
@@ -60,4 +59,21 @@ def get_1d_rotary_pos_embed_riflex(
     freqs_sin = freqs.sin().repeat_interleave(2, dim=1).float()  
     return freqs_cos, freqs_sin
 ```
-## Example
+## Inference with Diffusers
+#### Installation
+```bash
+conda create -n rifle python=3.10
+pip install -r requirements.txt
+```
+#### Single GPU
+For training-free 2× temporal extrapolation in HunyuanVideo: 
+```bash
+python hunyuanvideo.py --k 4 --N_k 50 --num_frames 261 
+```
+For finetuned 2× temporal extrapolation in HunyuanVideo: 
+```bash
+python hunyuanvideo.py --k 4 --N_k 50 --num_frames 261 --finetune --model_id "zhuhz22/HunyuanVideo_RIFLEx"
+```
+
+## Ackowledgements
+This repo are based on [Diffusers](https://github.com/huggingface/diffusers/tree/main),[HunyuanVideo](https://github.com/Tencent/HunyuanVideo),[CogvideoX](https://github.com/THUDM/CogVideo/tree/7b4c9db6d9178b2953f48c233b5e1ea77c0757da) and [FreeU](https://github.com/ChenyangSi/FreeU).
