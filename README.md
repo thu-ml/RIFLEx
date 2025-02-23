@@ -51,9 +51,8 @@ def get_1d_rotary_pos_embed_riflex(
     # === Riflex modification start ===
     # Reduce intrinsic frequency to stay within a single period after extrapolation (Eq.(8)).
     # Empirical observations show that a few videos may exhibit repetition in the tail frames.
-    # To be conservative, we multiply 0.9 to keep extrapolated length below 90% of a period.
-    if k is not None:
-        freqs[k-1] = 0.9 * 2 * torch.pi / L_test
+    # To be conservative, we multiply 0.9 to keep extrapolated length below 90% of a period. 
+    freqs[k-1] = 0.9 * 2 * torch.pi / L_test
     # === Riflex modification end ===
 
     freqs = torch.outer(pos, freqs)  
