@@ -27,7 +27,7 @@ Video Diffusion Transformers</h1>
 
 
 ## RIFLEx Code
-
+RIFLEx only adds a single line of code on the original [1D RoPE](https://github.com/huggingface/diffusers/blob/9c7e205176c30b27c5f44ec7650a8dfcc12dde86/src/diffusers/models/embeddings.py#L1105).
 ```python
 def get_1d_rotary_pos_embed_riflex(
     dim: int,
@@ -36,6 +36,10 @@ def get_1d_rotary_pos_embed_riflex(
     k: Optional[int] = None,
     L_test: Optional[int] = None,
 ):
+    '''
+        k: the index for the intrinsic frequency in RoPE
+        L_test: the number of frames for inference
+    '''
     assert dim % 2 == 0
     if isinstance(pos, int):
         pos = torch.arange(pos)
