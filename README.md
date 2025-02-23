@@ -74,4 +74,4 @@ python hunyuanvideo.py --k 4 --N_k 50 --num_frames 261 --finetune --model_id "zh
 ```
 
 ## Ackowledgements
-This repo are based on [Diffusers](https://github.com/huggingface/diffusers/tree/main),[HunyuanVideo](https://github.com/Tencent/HunyuanVideo),[CogvideoX](https://github.com/THUDM/CogVideo/tree/7b4c9db6d9178b2953f48c233b5e1ea77c0757da) and [FreeU](https://github.com/ChenyangSi/FreeU).
+This repo are based on [Diffusers](https://github.com/huggingface/diffusers/tree/main), [HunyuanVideo](https://github.com/Tencent/HunyuanVideo), [CogvideoX](https://github.com/THUDM/CogVideo/tree/7b4c9db6d9178b2953f48c233b5e1ea77c0757da) and [FreeU](https://github.com/ChenyangSi/FreeU).
