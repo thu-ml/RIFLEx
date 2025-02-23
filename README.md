@@ -1,8 +1,6 @@
 
 <div align="center">
 <img src='assets/riflex.png'></img>
-<h1>RIFLEx: A Free Lunch for Length Extrapolation in
-Video Diffusion Transformers</h1>
 
 <div>
     <a href="https://gracezhao1997.github.io/" target="_blank">Min Zhao</a><sup></sup> | 
