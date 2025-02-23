@@ -60,7 +60,7 @@ def get_1d_rotary_pos_embed_riflex(
 ## Inference with Diffusers
 #### Installation
 ```bash
-conda create -n rifle python=3.10
+conda create -n riflex python=3.10
 pip install -r requirements.txt
 ```
 #### Single GPU
