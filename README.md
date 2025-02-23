@@ -48,9 +48,6 @@ def get_1d_rotary_pos_embed_riflex(
     k: Optional[int] = None,
     L_test: Optional[int] = None,
 ):
-    """
-    RIFLEx: Precompute the frequency tensor for complex exponentials (cis) with given dimensions.
-    """
     assert dim % 2 == 0
     if isinstance(pos, int):
         pos = torch.arange(pos)
@@ -58,7 +55,6 @@ def get_1d_rotary_pos_embed_riflex(
         pos = torch.from_numpy(pos)
     freqs = 1.0 / (theta ** (torch.arange(0, dim, 2, device=pos.device)[: (dim // 2)].float() / dim)) 
 
-     
     # === Riflex modification start ===
     # Reduce intrinsic frequency to stay within a single cycle after extrapolation (see Eq.(8)).
     # Empirical observations show that a few videos may exhibit repetition in the tail frames.
