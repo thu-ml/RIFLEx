@@ -40,6 +40,7 @@ def get_1d_rotary_pos_embed_riflex(
         k: the index for the intrinsic frequency in RoPE
         L_test: the number of frames for inference
     '''
+    
     assert dim % 2 == 0
     if isinstance(pos, int):
         pos = torch.arange(pos)
