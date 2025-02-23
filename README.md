@@ -67,7 +67,6 @@ def get_1d_rotary_pos_embed_riflex(
     freqs_cos = freqs.cos().repeat_interleave(2, dim=1).float()  
     freqs_sin = freqs.sin().repeat_interleave(2, dim=1).float()  
     return freqs_cos, freqs_sin
-    
 ```
 
 identifying_k.py :
