@@ -49,7 +49,7 @@ if __name__ == "__main__":
     parser.add_argument('--k', type=int, help='Index of intrinsic frequency', default=4)
     parser.add_argument('--N_k', type=int, help='the period of intrinsic frequency', default=50)
     parser.add_argument('--num_frames', type=int, help='Number of frames for inference', default=261)
-    parser.add_argument('--finetune', type=bool, help='whether finetuned version', action='store_true')
+    parser.add_argument('--finetune', help='whether finetuned version', action='store_true')
     parser.add_argument('--model_id', type=str, help='huggingface path for models', default="hunyuanvideo-community/HunyuanVideo")
     args = parser.parse_args()
 
@@ -70,9 +70,12 @@ if __name__ == "__main__":
 
     # For training-free, if extrapolated length exceeds the period of intrinsic frequency, modify RoPE
     # For fine-tuning, we finetune the model on RIFLEx so we always modify RoPE
-    if args.L_test > args.N_k or args.finetune:
+    assert (args.num_frames - 1) % 4 == 0, "num_frames should be 4 * k + 1"
+    L_test = (args.num_frames-1) // 4 + 1
+    
+    if L_test > args.N_k or args.finetune:
         original_rope = pipe.transformer.rope
-        pipe.transformer.rope = HunyuanVideoRotaryPosEmbedRifleX(original_rope.patch_size, original_rope.patch_size_t, original_rope.rope_dim,original_rope.theta, args.k, args.L_test)
+        pipe.transformer.rope = HunyuanVideoRotaryPosEmbedRifleX(args.k, L_test, original_rope.patch_size, original_rope.patch_size_t, original_rope.rope_dim,original_rope.theta)
 
     pipe.vae.enable_tiling()
 

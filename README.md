@@ -62,6 +62,7 @@ def get_1d_rotary_pos_embed_riflex(
 ```bash
 conda create -n riflex python=3.10
 pip install -r requirements.txt
+pip install -U bitsandbytes
 ```
 #### Single GPU
 For training-free 2× temporal extrapolation in HunyuanVideo: 
