@@ -82,8 +82,8 @@ The prompts in the project page are available in `assets/prompt_free.txt` and `a
 
 Please note that Diffusers use `DiffusersBitsAndBytesConfig` to save memory, which may impact performance and may not reproduce the demos on the project page.
 
-## Multi GPU Inference (Recommended)
-To enhance inference speed and reproduce the demos in our [project page](https://riflex-video.github.io/), please use the multi-gpu inference. Details can be found in the [`multi-gpu` branch](https://github.com/thu-ml/RIFLEx/tree/multi-gpu).
+## Multi GPU Inference (*Recommended*)
+To enhance inference speed and **reproduce the demos** in our [project page](https://riflex-video.github.io/), please use the multi-gpu inference. Details can be found in the [`multi-gpu` branch](https://github.com/thu-ml/RIFLEx/tree/multi-gpu).
 
 
 ## TODO List
