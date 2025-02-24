@@ -99,7 +99,7 @@ python hunyuanvideo.py --k 4 --N_k 50 --num_frames 261
 ```
 For finetuned 2× temporal extrapolation in HunyuanVideo: 
 ```bash
-python hunyuanvideo.py --k 4 --N_k 50 --num_frames 261 --finetune --model_id "zhuhz22/HunyuanVideo_RIFLEx"
+python hunyuanvideo.py --k 4 --N_k 66 --num_frames 261 --finetune --model_id "thu-ml/Hunyuan-RIFLEx-diffusers"
 ```
 
 ## TODO List

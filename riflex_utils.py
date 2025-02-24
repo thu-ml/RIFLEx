@@ -77,7 +77,6 @@ def identify_k( b: float, d: int, N: int):
         theta_j = 1.0 / (b ** (2 * (j - 1) / d))
         N_j = round(2 * torch.pi / theta_j)
         periods.append(N_j)
-        print(j,N_j)
 
     # Identify the intrinsic frequency whose period is closed to N（see Eq.(7)）
     diffs = [abs(N_j - N) for N_j in periods]

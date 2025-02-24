@@ -1,4 +1,5 @@
 import argparse
+from accelerate.utils import set_seed
 import torch
 from diffusers.utils import export_to_video
 from diffusers.models.embeddings import get_1d_rotary_pos_embed
@@ -45,6 +46,7 @@ class HunyuanVideoRotaryPosEmbedRifleX(HunyuanVideoRotaryPosEmbed):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
+    parser.add_argument('--seed', type=int, help='Random sees', default=42)
     parser.add_argument('--k', type=int, help='Index of intrinsic frequency', default=4)
     parser.add_argument('--N_k', type=int, help='The period of intrinsic frequency in latent space', default=50)
     parser.add_argument('--num_frames', type=int, help='Number of frames for inference', default=261)
@@ -52,7 +54,9 @@ if __name__ == "__main__":
     parser.add_argument('--model_id', type=str, help='huggingface path for models', default="hunyuanvideo-community/HunyuanVideo")
     parser.add_argument('--prompt', type=str, help='Prompts for generation',default="3D animation of a small, round, fluffy creature with big, expressive eyes explores a vibrant, enchanted forest. The creature, a whimsical blend of a rabbit and a squirrel, has soft blue fur and a bushy, striped tail. It hops along a sparkling stream, its eyes wide with wonder. The forest is alive with magical elements: flowers that glow and change colors, trees with leaves in shades of purple and silver, and small floating lights that resemble fireflies. The creature stops to interact playfully with a group of tiny, fairy-like beings dancing around a mushroom ring. The creature looks up in awe at a large, glowing tree that seems to be the heart of the forest.")
     args = parser.parse_args()
-
+    
+    set_seed(args.seed)
+    
     assert (args.num_frames - 1) % 4 == 0, "num_frames should be 4 * k + 1"
     L_test = (args.num_frames - 1) // 4 + 1 # latent frames
 
@@ -82,6 +86,6 @@ if __name__ == "__main__":
         pipe.transformer.rope = HunyuanVideoRotaryPosEmbedRifleX(args.k, L_test, original_rope.patch_size, original_rope.patch_size_t, original_rope.rope_dim,original_rope.theta)
 
     video = pipe(prompt=args.prompt, num_frames=args.num_frames, num_inference_steps=50, height=544, width=960).frames[0]
-    export_to_video(video, f"{args.prompt[:20]}.mp4", fps=24)
+    export_to_video(video, f"seed_{args.seed}_{args.prompt[:20]}.mp4", fps=24)
 
 
