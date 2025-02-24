@@ -22,7 +22,7 @@
 </div>
 
 ## Installation
-The envrionment is the same with [HunyuanVideo](https://github.com/Tencent/HunyuanVideo)
+The envrionment is the same with [HunyuanVideo](https://github.com/Tencent/HunyuanVideo).
 ```bash
 # 1. Create conda environment
 conda create -n HunyuanVideo python==3.10.9
