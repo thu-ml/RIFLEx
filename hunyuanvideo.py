@@ -1,4 +1,3 @@
-from typing import List
 import argparse
 import torch
 from diffusers.utils import export_to_video
@@ -31,7 +30,7 @@ class HunyuanVideoRotaryPosEmbedRifleX(HunyuanVideoRotaryPosEmbed):
         freqs = []
         for i in range(3):
             # === RIFLEx modification start ===
-            # apply Riflex for time dimension
+            # apply RIFLEx for time dimension
             if i == 0:
                 freq = get_1d_rotary_pos_embed_riflex(self.rope_dim[i], grid[i].reshape(-1), self.theta, use_real=True, k=self.k, L_test=self.L_test)
             # === RIFLEx modification end ===
@@ -71,19 +70,18 @@ if __name__ == "__main__":
         device_map="balanced",
     )
     pipe.vae.enable_tiling()
+    original_rope = pipe.transformer.rope
 
-    # For training-free, if extrapolated length exceeds the period of intrinsic frequency, modify RoPE
+    # For training-free, if extrapolate length exceeds the period of intrinsic frequency, modify RoPE
     if L_test > args.N_k and not args.finetune:
-        original_rope = pipe.transformer.rope
         pipe.transformer.rope = HunyuanVideoRotaryPosEmbedRifleX(args.k, L_test, original_rope.patch_size, original_rope.patch_size_t, original_rope.rope_dim,original_rope.theta)
 
-    # For fine-tuning, if extrapolated length exceeds the new period of intrinsic frequency, modify RoPE we finetune the model on RIFLEx so we always modify RoPE
+    # We fine-tune the model on new theta_k and N_k, and thus modify RoPE to match the fine-tuning setting.
     if args.finetune:
-        L_test = args.N_k if L_test <= args.N_k else L_test
-        original_rope = pipe.transformer.rope
+        L_test = args.N_k # the fine-tuning frequency setting
         pipe.transformer.rope = HunyuanVideoRotaryPosEmbedRifleX(args.k, L_test, original_rope.patch_size, original_rope.patch_size_t, original_rope.rope_dim,original_rope.theta)
 
     video = pipe(prompt=args.prompt, num_frames=args.num_frames, num_inference_steps=50, height=544, width=960).frames[0]
-    export_to_video(video, f"{args.prompt[:10]}.mp4", fps=24)
+    export_to_video(video, f"{args.prompt[:20]}.mp4", fps=24)
 
 
