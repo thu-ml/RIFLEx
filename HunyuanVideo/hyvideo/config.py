@@ -50,10 +50,6 @@ def add_network_args(parser: argparse.ArgumentParser):
     )
     
     group.add_argument(
-        "--rope-theta", type=int, default=256, help="Theta used in RoPE."
-    )
-    
-    group.add_argument(
         '--k', type=int, help='Index of intrinsic frequency', default=4
     )
     group.add_argument(
