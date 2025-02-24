@@ -51,6 +51,7 @@ if __name__ == "__main__":
     parser.add_argument('--num_frames', type=int, help='Number of frames for inference', default=261)
     parser.add_argument('--finetune', help='whether finetuned version', action='store_true')
     parser.add_argument('--model_id', type=str, help='huggingface path for models', default="hunyuanvideo-community/HunyuanVideo")
+    parser.add_argument('--prompt', type=str, help='prompt for generation',default="3D animation of a small, round, fluffy creature with big, expressive eyes explores a vibrant, enchanted forest. The creature, a whimsical blend of a rabbit and a squirrel, has soft blue fur and a bushy, striped tail. It hops along a sparkling stream, its eyes wide with wonder. The forest is alive with magical elements: flowers that glow and change colors, trees with leaves in shades of purple and silver, and small floating lights that resemble fireflies. The creature stops to interact playfully with a group of tiny, fairy-like beings dancing around a mushroom ring. The creature looks up in awe at a large, glowing tree that seems to be the heart of the forest.")
     args = parser.parse_args()
 
     assert (args.num_frames - 1) % 4 == 0, "num_frames should be 4 * k + 1"
@@ -63,31 +64,26 @@ if __name__ == "__main__":
         quantization_config=quant_config,
         torch_dtype=torch.bfloat16,
     )
-
     pipe = HunyuanVideoPipeline.from_pretrained(
         "hunyuanvideo-community/HunyuanVideo",
         transformer=transformer_8bit,
         torch_dtype=torch.float16,
         device_map="balanced",
     )
+    pipe.vae.enable_tiling()
 
     # For training-free, if extrapolated length exceeds the period of intrinsic frequency, modify RoPE
-    # For fine-tuning, we finetune the model on RIFLEx so we always modify RoPE
-    if L_test > args.N_k or args.finetune:
+    if L_test > args.N_k and not args.finetune:
         original_rope = pipe.transformer.rope
         pipe.transformer.rope = HunyuanVideoRotaryPosEmbedRifleX(args.k, L_test, original_rope.patch_size, original_rope.patch_size_t, original_rope.rope_dim,original_rope.theta)
 
-    pipe.vae.enable_tiling()
+    # For fine-tuning, if extrapolated length exceeds the new period of intrinsic frequency, modify RoPE we finetune the model on RIFLEx so we always modify RoPE
+    if args.finetune:
+        L_test = args.N_k if L_test <= args.N_k else L_test
+        original_rope = pipe.transformer.rope
+        pipe.transformer.rope = HunyuanVideoRotaryPosEmbedRifleX(args.k, L_test, original_rope.patch_size, original_rope.patch_size_t, original_rope.rope_dim,original_rope.theta)
 
-    prompt = "3D animation of a small, round, fluffy creature with big, expressive eyes explores a vibrant, enchanted forest. The creature, a whimsical blend of a rabbit and a squirrel, has soft blue fur and a bushy, striped tail. It hops along a sparkling stream, its eyes wide with wonder. The forest is alive with magical elements: flowers that glow and change colors, trees with leaves in shades of purple and silver, and small floating lights that resemble fireflies. The creature stops to interact playfully with a group of tiny, fairy-like beings dancing around a mushroom ring. The creature looks up in awe at a large, glowing tree that seems to be the heart of the forest."
-    video = pipe(
-        prompt=prompt,
-        num_frames=args.num_frames,
-        num_inference_steps=50,
-        height=544,
-        width=960,
-    ).frames[0]
-
-    export_to_video(video, "demo_hunyuan.mp4", fps=24)
+    video = pipe(prompt=args.prompt, num_frames=args.num_frames, num_inference_steps=50, height=544, width=960).frames[0]
+    export_to_video(video, f"{args.prompt[:10]}.mp4", fps=24)
 
 

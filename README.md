@@ -74,5 +74,21 @@ For finetuned 2× temporal extrapolation in HunyuanVideo:
 python hunyuanvideo.py --k 4 --N_k 50 --num_frames 261 --finetune --model_id "zhuhz22/HunyuanVideo_RIFLEx"
 ```
 
+## TODO List
+- [x] Release the code and fine-tuned HunyuanVideo for temporal extrapoaltion
+- [ ] Support more models (e.g., CogVideoX)
+- [ ] Release the code and model for spatial and joint spatial-temporal extrapolation
+
 ## Ackowledgements
 This repo are based on [Diffusers](https://github.com/huggingface/diffusers/tree/main), [HunyuanVideo](https://github.com/Tencent/HunyuanVideo), [CogvideoX](https://github.com/THUDM/CogVideo/tree/7b4c9db6d9178b2953f48c233b5e1ea77c0757da) and [FreeU](https://github.com/ChenyangSi/FreeU).
+
+## References
+If you find the code useful, please cite
+```
+@article{zhao2025RIFLEx,
+          title={RIFLEx: A Free Lunch for Length Extrapolation in Video Diffusion Transformers}, 
+          author={Min Zhao and Guande He and Yixiao Chen and Hongzhou Zhu and Chongxuan Li and Jun Zhu},
+          year={2025},
+          journal={arXiv:2502.09535},
+}
+```
