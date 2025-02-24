@@ -80,6 +80,7 @@ The prompts in the project page are available in `assets/prompt_free.txt` and `a
 Considering using a single GPU needs much time, and DiffusersBitsAndBytesConfig may impact performance, we recommend using following multi-GPU inference to enhance speed and reproduce the demos on our [project page](https://riflex-video.github.io/).
 
 ## Multi GPU Inference
+See [`multi-gpu` branch](https://github.com/thu-ml/RIFLEx/tree/multi-gpu).
 
 ## TODO List
 - [x] Release the code and fine-tuned HunyuanVideo for temporal extrapoaltion
