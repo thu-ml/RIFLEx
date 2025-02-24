@@ -1,5 +1,9 @@
 <div align="center">
 <img src='assets/riflex.png'></img>
+ <a href='https://arxiv.org/abs/xxx.xxx'><img src='https://img.shields.io/badge/arXiv-xxx.xxx-b31b1b.svg'></a> &nbsp;
+ <a href='https://riflex-video.github.io/'><img src='https://img.shields.io/badge/Project-Page-Green'></a> &nbsp;
+<a href='https://www.youtube.com/watch?v=taofoXDsKGk'><img src='https://img.shields.io/badge/Youtube-Video-b31b1b.svg'></a><br>
+
 
 <div>
     <a href="https://gracezhao1997.github.io/" target="_blank">Min Zhao</a><sup></sup> | 
@@ -15,7 +19,6 @@
 
 
 
-[Paper](https://arxiv.org/pdf/xxx.xxx.pdf) | [Project Page](https://riflex-video.github.io/) | [Video](https://www.youtube.com/watch?v=taofoXDsKGk)
 </div>
 
 ## Installation
