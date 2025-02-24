@@ -64,7 +64,7 @@ def identify_k( b: float, d: int, N: int):
     Args:
         b (`float`): The base frequency for RoPE.
         d (`int`): Dimension of the frequency tensor
-        N (`int`): the first observed repetition frame
+        N (`int`): the first observed repetition frame in latent space
     Returns:
         k (`int`): the index of intrinsic frequency component
         N_k (`int`): the period of intrinsic frequency component
@@ -75,7 +75,7 @@ def identify_k( b: float, d: int, N: int):
         theta_j = 1.0 / (b ** (2 * (j - 1) / d))
         N_j = round(2 * torch.pi / theta_j)
         periods.append(N_j)
-        print(N_j)
+        print(j, N_j)
 
     # Identify the intrinsic frequency whose period is closed to N（see Eq.(7)）
     diffs = [abs(N_j - N) for N_j in periods]
@@ -83,6 +83,7 @@ def identify_k( b: float, d: int, N: int):
     N_k = periods[k-1]
     return k, N_k
 ```
+For example, in [HunyuanVideo](https://github.com/Tencent/HunyuanVideo), with `b=256` and `d=16`, the repetition occurs approximately 8s (`N=48` in latent space). In this case, the intrinsic frequency index `k` is 4, and the period `N_k` is 50.
 
 ## Inference with Diffusers
 #### Installation
