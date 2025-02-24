@@ -61,8 +61,8 @@ python download.py
 For training-free 2× temporal extrapolation in HunyuanVideo: 
 ```bash
 torchrun --nproc_per_node=6 sample_video.py \
-    --model-base ckpts \
-    --dit-weight ckpts/hunyuan-video-t2v-720p/transformers/mp_rank_00_model_states.pt \
+    --model-base HunyuanVideo/ckpts \
+    --dit-weight HunyuanVideo/ckpts/hunyuan-video-t2v-720p/transformers/mp_rank_00_model_states.pt \
     --video-size 544 960 \
     --infer-steps 50 \
     --flow-reverse \
@@ -79,8 +79,8 @@ torchrun --nproc_per_node=6 sample_video.py \
 For finetuned 2× temporal extrapolation in HunyuanVideo: 
 ```bash
 torchrun --nproc_per_node=6 sample_video.py \
-    --model-base ckpts \
-    --dit-weight ckpts/diffusion_pytorch_model.safetensors \
+    --model-base HunyuanVideo/ckpts \
+    --dit-weight HunyuanVideo/ckpts/diffusion_pytorch_model.safetensors \
     --video-size 544 960 \
     --infer-steps 50 \
     --flow-reverse \
