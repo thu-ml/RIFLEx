@@ -57,7 +57,7 @@ def get_1d_rotary_pos_embed_riflex(
     freqs_sin = freqs.sin().repeat_interleave(2, dim=1).float()  
     return freqs_cos, freqs_sin
 ```
-In [`riflex_utils.py`](https://github.com/thu-ml/RIFLEx/blob/48889fb8d6e7428e32cdad8f327897c0ef44d8d6/riflex_utils.py#L61), we show how to identify the intrinsic frequency in a RoPE-based pre-trained diffusion transformer.
+In `riflex_utils.py`, we show how to identify the intrinsic frequency in a RoPE-based pre-trained diffusion transformer.
 
 ## Inference with Diffusers
 #### Installation
