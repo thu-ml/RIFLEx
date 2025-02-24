@@ -69,7 +69,6 @@ def identify_k( b: float, d: int, N: int):
     Returns:
         k (`int`): the index of intrinsic frequency component
         N_k (`int`): the period of intrinsic frequency component in latent space
-
     Example:
         In HunyuanVideo, b=256 and d=16, the repetition occurs approximately 8s (N=48 in latent space).
         k, N_k = identify_k(b=256, d=16, N=48)
