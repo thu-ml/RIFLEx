@@ -72,8 +72,7 @@ pip install -U bitsandbytes
 ### Inference
 For training-free 2× temporal extrapolation in HunyuanVideo: 
 ```bash
-python hunyuanvideo.py --k 4 --N_k 50 --num_frames 261 --prompt "A white and orange tabby cat is seen happily darting through a dense garden, as if chasing something. Its eyes are wide and happy as it jogs forward, scanning the branches, flowers, and leaves as it walks. The path is narrow as it makes its way between all the plants. the scene is captured from a ground-level angle, following the cat closely, giving a low and intimate perspective. The image is cinematic with warm tones and a grainy texture. The scattered daylight between the leaves and plants above creates a warm contrast, accentuating the cat’s orange fur. The shot is clear and sharp, with a shallow depth of field.
-"
+python hunyuanvideo.py --k 4 --N_k 50 --num_frames 261 --prompt "A white and orange tabby cat is seen happily darting through a dense garden, as if chasing something. Its eyes are wide and happy as it jogs forward, scanning the branches, flowers, and leaves as it walks. The path is narrow as it makes its way between all the plants. the scene is captured from a ground-level angle, following the cat closely, giving a low and intimate perspective. The image is cinematic with warm tones and a grainy texture. The scattered daylight between the leaves and plants above creates a warm contrast, accentuating the cat’s orange fur. The shot is clear and sharp, with a shallow depth of field."
 ```
 For finetuned 2× temporal extrapolation in HunyuanVideo: 
 ```bash
