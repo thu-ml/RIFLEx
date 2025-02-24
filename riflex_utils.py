@@ -1,6 +1,6 @@
 import torch
 import numpy as np
-from typing import Union,Optional,Tuple, List
+from typing import Union,Optional
 
 def get_1d_rotary_pos_embed_riflex(
     dim: int,
@@ -65,17 +65,17 @@ def identify_k( b: float, d: int, N: int):
     Args:
         b (`float`): The base frequency for RoPE.
         d (`int`): Dimension of the frequency tensor
-        N (`int`): The first observed repetition frame
+        N (`int`): the first observed repetition frame
     Returns:
-        k (`int`): The index of intrinsic frequency component
-        N_k (`int`): The period of intrinsic frequency component
+        k (`int`): the index of intrinsic frequency component
+        N_k (`int`): the period of intrinsic frequency component
     """
 
     # Compute the period of each frequency in RoPE according to Eq.(4)
     periods = []
     for j in range(1, d // 2 + 1):
         theta_j = 1.0 / (b ** (2 * (j - 1) / d))
-        N_j = 2 * torch.pi / theta_j
+        N_j = round(2 * torch.pi / theta_j)
         periods.append(N_j)
         print(N_j)
 
