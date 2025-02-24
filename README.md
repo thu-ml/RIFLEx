@@ -1,0 +1,109 @@
+<div align="center">
+<img src='assets/riflex.png'></img>
+
+<div>
+    <a href="https://gracezhao1997.github.io/" target="_blank">Min Zhao</a><sup></sup> | 
+    <a href="https://guandehe.github.io/" target="_blank">Guande He</a><sup></sup> | 
+    <a href="https://github.com/Chyxx" target="_blank">Yixiao Chen</a><sup></sup> | 
+    <a href="https://zhuhz22.github.io/" target="_blank">Hongzhou Zhu</a><sup></sup>|
+<a href="https://zhenxuan00.github.io/" target="_blank">Chongxuan Li</a><sup></sup> | 
+    <a href="https://ml.cs.tsinghua.edu.cn/~jun/index.shtml" target="_blank">Jun Zhu</a><sup></sup>
+</div>
+<div>
+    <sup></sup>Tsinghua University
+</div>
+
+
+
+[Paper](https://arxiv.org/pdf/xxx.xxx.pdf) | [Project Page](https://riflex-video.github.io/) | [Video](https://www.youtube.com/watch?v=taofoXDsKGk)
+</div>
+
+## Installation
+The envrionment is the same with [HunyuanVideo](https://github.com/Tencent/HunyuanVideo)
+```bash
+# 1. Create conda environment
+conda create -n HunyuanVideo python==3.10.9
+
+# 2. Activate the environment
+conda activate HunyuanVideo
+
+# 3. Install PyTorch and other dependencies using conda
+# For CUDA 11.8
+conda install pytorch==2.4.0 torchvision==0.19.0 torchaudio==2.4.0 pytorch-cuda=11.8 -c pytorch -c nvidia
+# For CUDA 12.4
+conda install pytorch==2.4.0 torchvision==0.19.0 torchaudio==2.4.0 pytorch-cuda=12.4 -c pytorch -c nvidia
+
+# 4. Install pip dependencies
+python -m pip install -r requirements.txt
+
+# 5. Install flash attention v2 for acceleration (requires CUDA 11.8 or above)
+python -m pip install ninja
+python -m pip install git+https://github.com/Dao-AILab/flash-attention.git@v2.6.3
+
+# 6. Install xDiT for parallel inference (It is recommended to use torch 2.4.0 and flash-attn 2.6.3)
+python -m pip install xfuser==0.4.0
+```
+
+## Download Models
+```shell
+cd HunyuanVideo
+python -m pip install "huggingface_hub[cli]"
+huggingface-cli download tencent/HunyuanVideo --local-dir ./ckpts
+
+# Download our fine-tuned model with RIFLEx
+python download.py
+```
+
+## Multi GPU Inference
+For training-free 2× temporal extrapolation in HunyuanVideo: 
+```bash
+torchrun --nproc_per_node=6 sample_video.py \
+    --model-base ckpts \
+    --dit-weight ckpts/hunyuan-video-t2v-720p/transformers/mp_rank_00_model_states.pt \
+    --video-size 544 960 \
+    --infer-steps 50 \
+    --flow-reverse \
+    --seed 42 \
+    --ulysses-degree 6 \
+    --ring-degree 1 \
+    --save-path output \
+    --prompt "3D animation of a small, round, fluffy creature with big, expressive eyes explores a vibrant, enchanted forest. The creature, a whimsical blend of a rabbit and a squirrel, has soft blue fur and a bushy, striped tail. It hops along a sparkling stream, its eyes wide with wonder. The forest is alive with magical elements: flowers that glow and change colors, trees with leaves in shades of purple and silver, and small floating lights that resemble fireflies. The creature stops to interact playfully with a group of tiny, fairy-like beings dancing around a mushroom ring. The creature looks up in awe at a large, glowing tree that seems to be the heart of the forest." \
+    --k 4 \
+    --N_k 50 \
+    --video-length 261
+```
+
+For finetuned 2× temporal extrapolation in HunyuanVideo: 
+```bash
+torchrun --nproc_per_node=6 sample_video.py \
+    --model-base ckpts \
+    --dit-weight ckpts/diffusion_pytorch_model.safetensors \
+    --video-size 544 960 \
+    --infer-steps 50 \
+    --flow-reverse \
+    --seed 42 \
+    --ulysses-degree 6 \
+    --ring-degree 1 \
+    --save-path output \
+    --prompt "3D animation of a small, round, fluffy creature with big, expressive eyes explores a vibrant, enchanted forest. The creature, a whimsical blend of a rabbit and a squirrel, has soft blue fur and a bushy, striped tail. It hops along a sparkling stream, its eyes wide with wonder. The forest is alive with magical elements: flowers that glow and change colors, trees with leaves in shades of purple and silver, and small floating lights that resemble fireflies. The creature stops to interact playfully with a group of tiny, fairy-like beings dancing around a mushroom ring. The creature looks up in awe at a large, glowing tree that seems to be the heart of the forest." \
+    --k 4 \
+    --N_k 66 \
+    --video-length 261 \
+    --finetune
+```
+
+The prompts list in the project page are provided in `assets/prompt_free.txt` and `assets/prompt_finetune.txt`.
+
+Note that in the default parallel setting for [HunyuanVideo](https://github.com/Tencent/HunyuanVideo), the following number of GPUs are supported:
+
+<details>
+<summary>Supported Parallel Configurations (Click to expand)</summary>
+
+| --ulysses-degree x --ring-degree | --nproc_per_node |
+|-----------------------------------|------------------|
+|  6x1,3x2,2x3,1x6                  | 6                |
+|  4x1,2x2,1x4                      | 4                |
+|  3x1,1x3                          | 3                |
+|  1x2,2x1                          | 2                |
+
+</details>
