@@ -62,7 +62,7 @@ def get_1d_rotary_pos_embed_riflex(
 ```
 In `riflex_utils.py`, we show how to identify the intrinsic frequency in a RoPE-based pre-trained diffusion transformer.
 
-## Single GPU Inference with Diffusers
+## Single GPU Inference with Diffusers for Quick Start
 ### Installation
 ```bash
 conda create -n riflex python=3.10
@@ -80,10 +80,11 @@ python hunyuanvideo.py --k 4 --N_k 66 --num_frames 261 --finetune --model_id "th
 ```
 The prompts in the project page are available in `assets/prompt_free.txt` and `assets/prompt_finetune.txt`.
 
-Considering using a single GPU needs much time, and DiffusersBitsAndBytesConfig may impact performance, we recommend using following multi-GPU inference to enhance speed and reproduce the demos on our [project page](https://riflex-video.github.io/).
+Please note that Diffusers use `DiffusersBitsAndBytesConfig` to save memory, which may impact performance and may not reproduce the demos on the project page.
 
-## Multi GPU Inference
-See [`multi-gpu` branch](https://github.com/thu-ml/RIFLEx/tree/multi-gpu).
+## Multi GPU Inference (Recommended)
+To enhance inference speed and reproduce the demos in our [project page](https://riflex-video.github.io/), please use the multi-gpu inference. Details can be found in the [`multi-gpu` branch](https://github.com/thu-ml/RIFLEx/tree/multi-gpu).
+
 
 ## TODO List
 - [x] Release the code and fine-tuned HunyuanVideo for temporal extrapoaltion
