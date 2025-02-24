@@ -30,11 +30,11 @@ class HunyuanVideoRotaryPosEmbedRifleX(HunyuanVideoRotaryPosEmbed):
 
         freqs = []
         for i in range(3):
-            # === Riflex modification start ===
+            # === RIFLEx modification start ===
             # apply Riflex for time dimension
             if i == 0:
                 freq = get_1d_rotary_pos_embed_riflex(self.rope_dim[i], grid[i].reshape(-1), self.theta, use_real=True, k=self.k, L_test=self.L_test)
-            # === Riflex modification end ===
+            # === RIFLEx modification end ===
             else:
                 freq = get_1d_rotary_pos_embed(self.rope_dim[i], grid[i].reshape(-1), self.theta, use_real=True)
             freqs.append(freq)
@@ -53,6 +53,9 @@ if __name__ == "__main__":
     parser.add_argument('--model_id', type=str, help='huggingface path for models', default="hunyuanvideo-community/HunyuanVideo")
     args = parser.parse_args()
 
+    assert (args.num_frames - 1) % 4 == 0, "num_frames should be 4 * k + 1"
+    L_test = (args.num_frames - 1) // 4 + 1 # latent frames
+
     quant_config = DiffusersBitsAndBytesConfig(load_in_8bit=True)
     transformer_8bit = HunyuanVideoTransformer3DModel.from_pretrained(
         args.model_id,
@@ -70,9 +73,6 @@ if __name__ == "__main__":
 
     # For training-free, if extrapolated length exceeds the period of intrinsic frequency, modify RoPE
     # For fine-tuning, we finetune the model on RIFLEx so we always modify RoPE
-    assert (args.num_frames - 1) % 4 == 0, "num_frames should be 4 * k + 1"
-    L_test = (args.num_frames-1) // 4 + 1
-    
     if L_test > args.N_k or args.finetune:
         original_rope = pipe.transformer.rope
         pipe.transformer.rope = HunyuanVideoRotaryPosEmbedRifleX(args.k, L_test, original_rope.patch_size, original_rope.patch_size_t, original_rope.rope_dim,original_rope.theta)
@@ -88,6 +88,6 @@ if __name__ == "__main__":
         width=960,
     ).frames[0]
 
-    export_to_video(video, "demo.mp4", fps=24)
+    export_to_video(video, "demo_hunyuan.mp4", fps=24)
 
 
