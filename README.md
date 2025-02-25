@@ -46,6 +46,24 @@ python -m pip install git+https://github.com/Dao-AILab/flash-attention.git@v2.6.
 # 6. Install xDiT for parallel inference (It is recommended to use torch 2.4.0 and flash-attn 2.6.3)
 python -m pip install xfuser==0.4.0
 ```
+<details>
+<summary>In case of running into float point exception(core dump) on the specific GPU type, you may try the following solutions (Click to expand)</summary>
+
+```bash
+# Option 1: Making sure you have installed CUDA 12.4, CUBLAS>=12.4.5.8, and CUDNN>=9.00 (or simply using our CUDA 12 docker image).
+pip install nvidia-cublas-cu12==12.4.5.8
+export LD_LIBRARY_PATH=/opt/conda/lib/python3.8/site-packages/nvidia/cublas/lib/
+
+# Option 2: Forcing to explictly use the CUDA 11.8 compiled version of Pytorch and all the other packages
+pip uninstall -r requirements.txt  # uninstall all packages
+pip uninstall -y xfuser
+pip install torch==2.4.0 --index-url https://download.pytorch.org/whl/cu118
+pip install -r requirements.txt
+pip install ninja
+pip install git+https://github.com/Dao-AILab/flash-attention.git@v2.6.3
+pip install xfuser==0.4.0
+```
+</details>
 
 ## Download Models
 ```shell
