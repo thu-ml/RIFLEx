@@ -47,7 +47,7 @@ python -m pip install git+https://github.com/Dao-AILab/flash-attention.git@v2.6.
 python -m pip install xfuser==0.4.0
 ```
 
-In case of `AssertionError: Ulysses Attention and Ring Attention requires xfuser package.`, you may update xfusers to 0.4.1.
+In case of `AssertionError: Ulysses Attention and Ring Attention requires xfuser package.`, you may update xfusers to 0.4.1 :
 ```
 pip install xfuser==0.4.1
 ```
