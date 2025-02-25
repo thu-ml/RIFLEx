@@ -3,7 +3,7 @@
 <img src='assets/riflex.png'></img>
 
 
- <a href='https://arxiv.org/abs/xxx.xxx'><img src='https://img.shields.io/badge/arXiv-xxx.xxx-b31b1b.svg'></a> &nbsp;
+ <a href='https://arxiv.org/pdf/2502.15894'><img src='https://img.shields.io/badge/arXiv-2502.15894-b31b1b.svg'></a> &nbsp;
  <a href='https://riflex-video.github.io/'><img src='https://img.shields.io/badge/Project-Page-Green'></a> &nbsp;
 <a href='https://www.youtube.com/watch?v=taofoXDsKGk'><img src='https://img.shields.io/badge/Youtube-Video-b31b1b.svg'></a><br>
 
@@ -94,10 +94,12 @@ To enhance inference speed and **reproduce the demos** in our [project page](htt
 ## References
 If you find the code useful, please cite
 ```
-@article{zhao2025RIFLEx,
-          title={RIFLEx: A Free Lunch for Length Extrapolation in Video Diffusion Transformers}, 
-          author={Min Zhao and Guande He and Yixiao Chen and Hongzhou Zhu and Chongxuan Li and Jun Zhu},
-          year={2025},
-          journal={arXiv:2502.09535},
+@misc{zhao2025riflex,
+    title={RIFLEx: A Free Lunch for Length Extrapolation in Video Diffusion Transformers},
+    author={Min Zhao and Guande He and Yixiao Chen and Hongzhou Zhu and Chongxuan Li and Jun Zhu},
+    year={2025},
+    eprint={2502.15894},
+    archivePrefix={arXiv},
+    primaryClass={cs.CV}
 }
 ```
