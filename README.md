@@ -45,6 +45,8 @@ python -m pip install git+https://github.com/Dao-AILab/flash-attention.git@v2.6.
 
 # 6. Install xDiT for parallel inference (It is recommended to use torch 2.4.0 and flash-attn 2.6.3)
 python -m pip install xfuser==0.4.0
+# **In case of `AssertionError: Ulysses Attention and Ring Attention requires xfuser package.`, update xfusers to 0.4.1**
+# pip install xfuser==0.4.1
 ```
 <details>
 <summary>In case of running into float point exception(core dump) on the specific GPU type, you may try the following solutions (Click to expand)</summary>
