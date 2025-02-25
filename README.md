@@ -49,7 +49,8 @@ python -m pip install xfuser==0.4.0
 
 <details>
 <summary> In case of running into `AssertionError: Ulysses Attention and Ring Attention requires xfuser package`, you may update xfusers to 0.4.1 (Click to expand) </summary>
-```
+ 
+```bash
 pip install xfuser==0.4.1
 ```
 </details>
