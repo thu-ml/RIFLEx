@@ -1,0 +1,14 @@
+opencv-python==4.9.0.80
+diffusers==0.31.0
+transformers==4.46.3
+tokenizers==0.20.3
+accelerate==1.1.1
+pandas==2.0.3
+numpy==1.24.4
+einops==0.7.0
+tqdm==4.66.2
+loguru==0.7.2
+imageio==2.34.0
+imageio-ffmpeg==0.5.1
+safetensors==0.4.3
+gradio==5.0.0
