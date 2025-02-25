@@ -78,12 +78,15 @@ For finetuned 2× temporal extrapolation in HunyuanVideo:
 ```bash
 python hunyuanvideo.py --k 4 --N_k 66 --num_frames 261 --finetune --model_id "thu-ml/Hunyuan-RIFLEx-diffusers" --prompt "3D animation of a small, round, fluffy creature with big, expressive eyes explores a vibrant, enchanted forest. The creature, a whimsical blend of a rabbit and a squirrel, has soft blue fur and a bushy, striped tail. It hops along a sparkling stream, its eyes wide with wonder. The forest is alive with magical elements: flowers that glow and change colors, trees with leaves in shades of purple and silver, and small floating lights that resemble fireflies. The creature stops to interact playfully with a group of tiny, fairy-like beings dancing around a mushroom ring. The creature looks up in awe at a large, glowing tree that seems to be the heart of the forest."
 ```
+
+> Note that the current version of diffusers only supports single-GPU inference. If there are multiple GPUs in the environment, please specify one by exporting CUDA_VISIBLE_DEVICES.
+
 The prompts in the project page are available in `assets/prompt_free.txt` and `assets/prompt_finetune.txt`.
 
 Please note that Diffusers use `DiffusersBitsAndBytesConfig` to save memory, which may impact performance and may not reproduce the demos on the project page.
 
-## Multi GPU Inference (*Recommended*)
-To enhance inference speed and **reproduce the demos** in our [project page](https://riflex-video.github.io/), please use the multi-gpu inference. Details can be found in the [`multi-gpu` branch](https://github.com/thu-ml/RIFLEx/tree/multi-gpu).
+## Multi GPU Inference ( *Recommended* )
+To **enhance inference speed** and **reproduce the demos** in our [project page](https://riflex-video.github.io/), please use the multi-gpu inference. Details can be found in the [`multi-gpu` branch](https://github.com/thu-ml/RIFLEx/tree/multi-gpu).
 
 
 ## TODO List
