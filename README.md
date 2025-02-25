@@ -55,6 +55,12 @@ huggingface-cli download tencent/HunyuanVideo --local-dir ./ckpts
 
 # Download our fine-tuned model with RIFLEx
 python download.py
+
+# Download text-encoders
+cd ckpts
+huggingface-cli download xtuner/llava-llama-3-8b-v1_1-transformers --local-dir ./llava-llama-3-8b-v1_1-transformers
+python ../hyvideo/utils/preprocess_text_encoder_tokenizer_utils.py --input_dir llava-llama-3-8b-v1_1-transformers --output_dir text_encoder
+huggingface-cli download openai/clip-vit-large-patch14 --local-dir ./text_encoder_2
 ```
 
 ## Multi GPU Inference
