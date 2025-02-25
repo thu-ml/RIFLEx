@@ -47,10 +47,12 @@ python -m pip install git+https://github.com/Dao-AILab/flash-attention.git@v2.6.
 python -m pip install xfuser==0.4.0
 ```
 
-In case of running into `AssertionError: Ulysses Attention and Ring Attention requires xfuser package`, you may update xfusers to 0.4.1 :
+<details>
+<summary> In case of running into `AssertionError: Ulysses Attention and Ring Attention requires xfuser package`, you may update xfusers to 0.4.1 (Click to expand) </summary>
 ```
 pip install xfuser==0.4.1
 ```
+</details>
 
 <details>
 <summary>In case of running into float point exception(core dump) on the specific GPU type, you may try the following solutions (Click to expand)</summary>
