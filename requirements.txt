@@ -5,7 +5,6 @@ numpy==1.26.0
 torch==2.5.1
 torchvision>=0.20.0
 sentencepiece>=0.2.0
-gradio>=5.5.0
 imageio>=2.35.1
 imageio-ffmpeg>=0.5.1
 openai>=1.54.0
