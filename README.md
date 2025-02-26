@@ -30,11 +30,11 @@
 ## Supported Models
 Here, we list the SOTA video diffusion transformers that RIFLEx has been applied to. We are continuously working to support more models. Feel free to suggest additional models you would like us to support!
 
-| Model                                                   | Length Extrapolation | PE  (Training-free)| Ours (Training-free)| 
-|---------------------------------------------------------|---------------------| ---------------------| ---------------------| 
-| [HunyuanVideo](https://github.com/Tencent/HunyuanVideo) | 5s -> 11s           | <img src=assets/hun-free-baseline.gif width="150">|<img src=assets/hun-free-RIFLEx.gif width="150"> | 
-| [CogVideoX-5B](https://github.com/THUDM/CogVideo)       | 6s -> 12s           |  <img src=assets/cog-free-baseline.gif width="150">|<img src=assets/cog-free-RIFLEx.gif width="150"> | 
-| To be continuned……                                      | -                   | -| -| 
+| Model                                                   | Length Extrapolation | PE  (Training-free)| Ours (Training-free)|  PE  (Fine-tuned)| Ours (Fine-tuned)| 
+|---------------------------------------------------------|---------------------| ---------------------| ---------------------|  ---------------------| ---------------------| 
+| [HunyuanVideo](https://github.com/Tencent/HunyuanVideo) | 5s -> 11s           | <img src=assets/hun-free-baseline.gif width="150">|<img src=assets/hun-free-RIFLEx.gif width="150"> | <img src=assets/hun-finetuned-baseline.gif width="150">|<img src=assets/hun-ft-riflex.gif  width="150"> | 
+| [CogVideoX-5B](https://github.com/THUDM/CogVideo)       | 6s -> 12s           |  <img src=assets/cog-free-baseline.gif width="150">|<img src=assets/cog-free-RIFLEx.gif width="150"> | <img src=assets/cog-finetune-baseline.gif width="150">|<img src=assets/cog-finetune-RIFLEx.gif width="150"> | 
+| To be continuned……                                      | -                   | -| -| -|-|
 
 
 ## RIFLEx Code
