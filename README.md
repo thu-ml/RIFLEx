@@ -26,6 +26,16 @@
 
 ---
 
+## Supported Models
+Here, we list the SOTA video diffusion transformers that RIFLEx has been applied to. We are continuously working to support more models. Feel free to suggest additional models you would like us to support!
+
+| Model                                                   | Length Extrapolation | 
+|---------------------------------------------------------|---------------------| 
+| [HunyuanVideo](https://github.com/Tencent/HunyuanVideo) | 5s -> 11s           | 
+| [CogVideoX-5B](https://github.com/THUDM/CogVideo)       | 6s -> 12s           | 
+| To be continuned……                                      | -                   | 
+
+
 ## RIFLEx Code
 RIFLEx only adds a single line of code on the original [1D RoPE](https://github.com/huggingface/diffusers/blob/9c7e205176c30b27c5f44ec7650a8dfcc12dde86/src/diffusers/models/embeddings.py#L1105).
 ```python
