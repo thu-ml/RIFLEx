@@ -2,10 +2,11 @@
 <div align="center">
 <img src='assets/riflex.png'></img>
 
-
- <a href='https://arxiv.org/pdf/2502.15894'><img src='https://img.shields.io/badge/arXiv-2502.15894-b31b1b.svg'></a> &nbsp;
- <a href='https://riflex-video.github.io/'><img src='https://img.shields.io/badge/Project-Page-Green'></a> &nbsp;
+<a href="https://huggingface.co/papers/2502.15894"><img src="https://img.shields.io/static/v1?label=Daily papers&message=HuggingFace&color=yellow"></a>
+<a href='https://riflex-video.github.io/'><img src='https://img.shields.io/badge/Project-Page-Green'></a> &nbsp; 
+<a href='https://arxiv.org/pdf/2502.15894'><img src='https://img.shields.io/badge/arXiv-2502.15894-b31b1b.svg'></a> &nbsp;
 <a href='https://www.youtube.com/watch?v=taofoXDsKGk'><img src='https://img.shields.io/badge/Youtube-Video-b31b1b.svg'></a><br>
+
 
 
 <div>
