@@ -30,10 +30,10 @@
 ## 🎉 Supported Models
 Here, we list the SOTA video diffusion transformers that RIFLEx has been applied to. We are continuously working to support more models. Feel free to suggest additional models you would like us to support!
 
-| Model                                                   | Length Extrapolation | 
-|---------------------------------------------------------|---------------------|  
-| [HunyuanVideo](https://github.com/Tencent/HunyuanVideo) | 5s -> 11s           | 
-| [CogVideoX-5B](https://github.com/THUDM/CogVideo)       | 6s -> 12s           |  
+| Model                                                   | Length Extrapolation | PE  | RIFLEx(Ours) |  
+|---------------------------------------------------------|---------------------| ---------------------| ---------------------|  
+| [HunyuanVideo](https://github.com/Tencent/HunyuanVideo) | 5s -> 11s           | <img src=assets/hun-free-baseline.gif width="200">|<img src=assets/hun-free-RIFLEx.gif width="200"> | 
+| [CogVideoX-5B](https://github.com/THUDM/CogVideo)       | 6s -> 12s           |  <img src=assets/cog-finetune-baseline.gif width="200">|<img src=assets/cog-finetune-RIFLEx.gif width="200"> |
 
 To be continuned…… 
 
