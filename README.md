@@ -41,7 +41,7 @@ To be continuned……
 
 If RIFLEx is used or developed in your projects, we would love to hear from you!
 
-- [HunyuanVideoGP](https://github.com/deepbeepmeep/HunyuanVideoGP) : Developed by [DeepBeepMeep](https://github.com/deepbeepmeep), HunyuanVideoGP enables the generation of a 10.5 s video at 1280x720 resolution on an RTX 4090.
+- [HunyuanVideoGP](https://github.com/deepbeepmeep/HunyuanVideoGP) : a 10.5 s video at 1280x720 can be generated on an RTX 4090.
 
 
 ## RIFLEx Code
