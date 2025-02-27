@@ -37,6 +37,12 @@ Here, we list the SOTA video diffusion transformers that RIFLEx has been applied
 
 To be continuned…… 
 
+## Community Contributions
+
+If RIFLEx is used or developed in your projects, we would love to hear from you.
+
+- HunyuanVideoGP (GPU Poor version): [HunyuanVideoGP](https://github.com/deepbeepmeep/HunyuanVideoGP) by [DeepBeepMeep](https://github.com/deepbeepmeep)
+
 
 ## RIFLEx Code
 RIFLEx only adds a single line of code on the original [1D RoPE](https://github.com/huggingface/diffusers/blob/9c7e205176c30b27c5f44ec7650a8dfcc12dde86/src/diffusers/models/embeddings.py#L1105).
