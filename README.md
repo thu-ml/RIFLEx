@@ -116,12 +116,10 @@ To **enhance inference speed** and **reproduce the demos** in our [project page]
 ## References
 If you find the code useful, please cite
 ```
-@misc{zhao2025riflex,
-    title={RIFLEx: A Free Lunch for Length Extrapolation in Video Diffusion Transformers},
-    author={Min Zhao and Guande He and Yixiao Chen and Hongzhou Zhu and Chongxuan Li and Jun Zhu},
-    year={2025},
-    eprint={2502.15894},
-    archivePrefix={arXiv},
-    primaryClass={cs.CV}
+@article{zhao2025riflex,
+  title={RIFLEx: A Free Lunch for Length Extrapolation in Video Diffusion Transformers},
+  author={Zhao, Min and He, Guande and Chen, Yixiao and Zhu, Hongzhou and Li, Chongxuan and Zhu, Jun},
+  journal={arXiv preprint arXiv:2502.15894},
+  year={2025}
 }
 ```
