@@ -36,7 +36,7 @@ Here, we list the SOTA video diffusion transformers that RIFLEx has been applied
 | [HunyuanVideo](https://github.com/Tencent/HunyuanVideo) | 5s -> 11s           | <img src=assets/hun-free-RIFLEx.gif width="250">     | 
 | [CogVideoX-5B](https://github.com/THUDM/CogVideo)       | 6s -> 12s           | <img src=assets/cog-finetune-RIFLEx.gif width="250"> |
 
-To be continuned…… 
+To be continued…… 
 
 ## 🧩 Community Contributions
 
@@ -100,7 +100,7 @@ python hunyuanvideo.py --k 4 --N_k 66 --num_frames 261 --finetune --model_id "th
 
 > Note that the current version of diffusers only supports single-GPU inference. If there are multiple GPUs in the environment, please specify one by exporting CUDA_VISIBLE_DEVICES.
 
-The prompts in the project page are available in `assets/prompt_free.txt` and `assets/prompt_finetune.txt`.
+The prompts on the project page are available in `assets/prompt_free.txt` and `assets/prompt_finetune.txt`.
 
 Please note that Diffusers use `DiffusersBitsAndBytesConfig` to save memory, which may impact performance and may not reproduce the demos on the project page.
 
@@ -109,7 +109,7 @@ To **enhance inference speed** and **reproduce the demos** in our [project page]
 
 
 ## TODO List
-- [x] Release the code and fine-tuned HunyuanVideo for temporal extrapoaltion
+- [x] Release the code and fine-tuned HunyuanVideo for temporal extrapolation
 - [ ] Support more models (e.g., CogVideoX)
 - [ ] Release the code and model for spatial and joint spatial-temporal extrapolation
 
