@@ -31,11 +31,11 @@
 Here, we list the SOTA video diffusion transformers that RIFLEx has been applied to. We are continuously working to support more models. Feel free to suggest additional models you would like us to support!
 
 
-| Model                                                   |  Extrapolation | Example Results                                      |  
-|---------------------------------------------------------|---------------------|------------------------------------------------------|  
-| [HunyuanVideo](https://github.com/Tencent/HunyuanVideo) | 5s -> 11s           | <img src=assets/hun-free-RIFLEx.gif width="250">     | 
-| [CogVideoX-5B](https://github.com/THUDM/CogVideo)       | 6s -> 12s           | <img src=assets/cog-finetune-RIFLEx.gif width="250"> |
-
+| Model                                                   |  Extrapolation | Example Results                                              |  
+|---------------------------------------------------------|---------------------|--------------------------------------------------------------|  
+| [HunyuanVideo](https://github.com/Tencent/HunyuanVideo) | 5s -> 11s           | <img src=assets/example/hun-free-RIFLEx.gif width="250">     | 
+| [CogVideoX-5B](https://github.com/THUDM/CogVideo)       | 6s -> 12s           | <img src=assets/example/cog-finetune-RIFLEx.gif width="250"> |
+| [Wan2.1](https://github.com/THUDM/CogVideo)             | 6s -> 12s           | <img src=assets/example/cog-finetune-RIFLEx.gif width="250"> |
 To be continued…… 
 
 ## 🧩 Community Contributions
@@ -88,21 +88,35 @@ conda create -n riflex python=3.10
 pip install -r requirements.txt
 pip install -U bitsandbytes
 ```
-### Inference
-For training-free 2× temporal extrapolation in HunyuanVideo: 
+### Inference for HunyuanVideo
+
+For training-free 2× temporal extrapolation: 
 ```bash
 python hunyuanvideo.py --k 4 --N_k 50 --num_frames 261 --prompt "A white and orange tabby cat is seen happily darting through a dense garden, as if chasing something. Its eyes are wide and happy as it jogs forward, scanning the branches, flowers, and leaves as it walks. The path is narrow as it makes its way between all the plants. the scene is captured from a ground-level angle, following the cat closely, giving a low and intimate perspective. The image is cinematic with warm tones and a grainy texture. The scattered daylight between the leaves and plants above creates a warm contrast, accentuating the cat’s orange fur. The shot is clear and sharp, with a shallow depth of field."
 ```
-For finetuned 2× temporal extrapolation in HunyuanVideo: 
+For finetuned 2× temporal extrapolation: 
 ```bash
 python hunyuanvideo.py --k 4 --N_k 66 --num_frames 261 --finetune --model_id "thu-ml/Hunyuan-RIFLEx-diffusers" --prompt "3D animation of a small, round, fluffy creature with big, expressive eyes explores a vibrant, enchanted forest. The creature, a whimsical blend of a rabbit and a squirrel, has soft blue fur and a bushy, striped tail. It hops along a sparkling stream, its eyes wide with wonder. The forest is alive with magical elements: flowers that glow and change colors, trees with leaves in shades of purple and silver, and small floating lights that resemble fireflies. The creature stops to interact playfully with a group of tiny, fairy-like beings dancing around a mushroom ring. The creature looks up in awe at a large, glowing tree that seems to be the heart of the forest."
 ```
-
 > Note that the current version of diffusers only supports single-GPU inference. If there are multiple GPUs in the environment, please specify one by exporting CUDA_VISIBLE_DEVICES.
 
-The prompts on the project page are available in `assets/prompt_free.txt` and `assets/prompt_finetune.txt`.
+The prompts on the project page are available in `assets/prompts/prompt_free.txt` and `assets/prompts/finetune_hunyuan.txt`.
 
 Please note that Diffusers use `DiffusersBitsAndBytesConfig` to save memory, which may impact performance and may not reproduce the demos on the project page.
+
+### Inference for CogVideoX:
+
+For training-free 2× temporal extrapolation: 
+```bash
+python cogvideox.py --k 2 --N_k 20 --num_frames 97 --prompt "3D animation of a small, round, fluffy creature with big, expressive eyes explores a vibrant, enchanted forest. The creature, a whimsical blend of a rabbit and a squirrel, has soft blue fur and a bushy, striped tail. It hops along a sparkling stream, its eyes wide with wonder. The forest is alive with magical elements: flowers that glow and change colors, trees with leaves in shades of purple and silver, and small floating lights that resemble fireflies. The creature stops to interact playfully with a group of tiny, fairy-like beings dancing around a mushroom ring. The creature looks up in awe at a large, glowing tree that seems to be the heart of the forest."
+```
+
+For finetuned 2× temporal extrapolation: 
+```bash
+python cogvideox.py --k 2 --N_k 25 --num_frames 97 --finetune --model_id "thu-ml/CogVideoX-RIFLEx-diffusers" --prompt "A drone camera circles around a beautiful historic church built on a rocky outcropping along the Amalfi Coast, the view showcases historic and magnificent architectural details and tiered pathways and patios, waves are seen crashing against the rocks below as the view overlooks the horizon of the coastal waters and hilly landscapes of the Amalfi Coast Italy, several distant people are seen walking and enjoying vistas on patios of the dramatic ocean views, the warm glow of the afternoon sun creates a magical and romantic feeling to the scene, the view is stunning captured with beautiful photography."
+```
+
+We provide some prompts for CogVideoX in `assets/prompts/free_cogvideox.txt` and `assets/prompts/fintune_cogvideox.txt`.
 
 ## Multi GPU Inference ( *Recommended* )
 To **enhance inference speed** and **reproduce the demos** in our [project page](https://riflex-video.github.io/), please use the multi-gpu inference. Details can be found in the [`multi-gpu` branch](https://github.com/thu-ml/RIFLEx/tree/multi-gpu).
