@@ -47,7 +47,7 @@ To be continued……
 - **2025.2.25** : The [paper](https://arxiv.org/pdf/2502.15894), [project page](https://riflex-video.github.io/), code and fine-tuned [HunyuanVideo-RIFLEx](https://huggingface.co/thu-ml/Hunyuan-RIFLEx-diffusers) are released.
 
 
-## 🔑 RIFLEx Code
+## RIFLEx Code
 RIFLEx only adds a single line of code on the original [1D RoPE](https://github.com/huggingface/diffusers/blob/9c7e205176c30b27c5f44ec7650a8dfcc12dde86/src/diffusers/models/embeddings.py#L1105).
 ```python
 def get_1d_rotary_pos_embed_riflex(
@@ -83,7 +83,7 @@ def get_1d_rotary_pos_embed_riflex(
 ```
 In `riflex_utils.py`, we show how to identify the intrinsic frequency in a RoPE-based pre-trained diffusion transformer.
 
-## 🤗 Single GPU Inference with Diffusers for Quick Start
+## Single GPU Inference with Diffusers for Quick Start
 ### Installation
 ```bash
 conda create -n riflex python=3.10
@@ -131,16 +131,10 @@ python cogvideox.py --k 2 --N_k 25 --num_frames 97 --finetune --model_id "thu-ml
 ```
 </details>
 
-<<<<<<< HEAD
 ## Multi-GPU Inference ( *Recommended* )
-=======
-We provide some prompts for CogVideoX in `assets/prompts/free_cogvideox.txt` and `assets/prompts/fintune_cogvideox.txt`.
-
-## 🚀 Multi GPU Inference ( *Recommended* )
->>>>>>> origin
 To **enhance inference speed** and **reproduce the demos** in our [project page](https://riflex-video.github.io/), please use the multi-gpu inference. Details can be found in the [`multi-gpu` branch](https://github.com/thu-ml/RIFLEx/tree/multi-gpu).
 
-## 🔗 References
+## References
 If you find the code useful, please cite
 ```
 @article{zhao2025riflex,
