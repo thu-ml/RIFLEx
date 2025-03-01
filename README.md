@@ -43,7 +43,7 @@ To be continued……
 
 - **2025.3.1** : The code for [CogVideoX-5B](https://github.com/THUDM/CogVideo) and fine-tuned [CogVideoX-RIFLEx](https://huggingface.co/thu-ml/CogVideoX-RIFLEx-diffusers/tree/main) are released.
 - **2025.2.26** RIFLEx is supported in [HunyuanVideoGP](https://github.com/deepbeepmeep/HunyuanVideoGP), where a 10.5 s video at 1280x720 can be generated on an RTX 4090.
-- **2025.2.26** RIFLEx is supported in [ComfyUI-HunyuanVideoWrapper](https://github.com/kijai/ComfyUI-HunyuanVideoWrapper).
+- **2025.2.26** RIFLEx is supported in [ComfyUI-HunyuanVideoWrapper](https://github.com/kijai/ComfyUI-HunyuanVideoWrapper) by [KiJai](https://github.com/kijai).
 - **2025.2.25** : The [paper](https://arxiv.org/pdf/2502.15894), [project page](https://riflex-video.github.io/), code and fine-tuned [HunyuanVideo-RIFLEx](https://huggingface.co/thu-ml/Hunyuan-RIFLEx-diffusers) are released.
 
 
