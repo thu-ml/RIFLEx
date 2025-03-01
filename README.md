@@ -38,11 +38,12 @@ Here, we list the SOTA video diffusion transformers that RIFLEx has been applied
 
 To be continued…… 
 
-## 🧩 Community Contributions
+## 🔥🔥 News
 
-If RIFLEx is used or developed in your projects, we would love to hear from you!
-
-- [HunyuanVideoGP](https://github.com/deepbeepmeep/HunyuanVideoGP) : a 10.5 s video at 1280x720 can be generated on an RTX 4090.
+- **2025.3.1** : The code for [CogVideoX-5B](https://github.com/THUDM/CogVideo) and fine-tuned [CogVideoX-RIFLEx](https://huggingface.co/thu-ml/CogVideoX-RIFLEx-diffusers/tree/main) are released.
+- **2025.2.26** RIFLEx is supported in [HunyuanVideoGP](https://github.com/deepbeepmeep/HunyuanVideoGP), where a 10.5 s video at 1280x720 can be generated on an RTX 4090.
+- **2025.2.26** RIFLEx is supported in [ComfyUI-HunyuanVideoWrapper](https://github.com/kijai/ComfyUI-HunyuanVideoWrapper).
+- **2025.2.25** : The [paper](https://arxiv.org/pdf/2502.15894), [project page](https://riflex-video.github.io/), code and fine-tuned [HunyuanVideo-RIFLEx](https://huggingface.co/thu-ml/Hunyuan-RIFLEx-diffusers) are released.
 
 
 ## RIFLEx Code
@@ -120,12 +121,6 @@ We provide some prompts for CogVideoX in `assets/prompts/free_cogvideox.txt` and
 
 ## Multi GPU Inference ( *Recommended* )
 To **enhance inference speed** and **reproduce the demos** in our [project page](https://riflex-video.github.io/), please use the multi-gpu inference. Details can be found in the [`multi-gpu` branch](https://github.com/thu-ml/RIFLEx/tree/multi-gpu).
-
-
-## TODO List
-- [x] Release the code and fine-tuned HunyuanVideo for temporal extrapolation
-- [ ] Support more models (e.g., CogVideoX)
-- [ ] Release the code and model for spatial and joint spatial-temporal extrapolation
 
 ## References
 If you find the code useful, please cite
