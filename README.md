@@ -106,7 +106,7 @@ The prompts on the project page are available in `assets/prompts/prompt_free.txt
 
 Please note that Diffusers use `DiffusersBitsAndBytesConfig` to save memory, which may impact performance and may not reproduce the demos on the project page.
 
-### Inference for CogVideoX:
+### Inference for CogVideoX
 
 For training-free 2× temporal extrapolation: 
 ```bash
