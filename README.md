@@ -99,7 +99,7 @@ Please note that for single GPU inference with HunyuanVideo, Diffusers use `Diff
 ### Inference for HunyuanVideo
 
 <details>
-<summary> 2× temporal extrapolation </summary>
+<summary> 2× temporal extrapolation (click to expand)</summary>
 
 For training-free: 
 ```bash
@@ -118,7 +118,7 @@ python hunyuanvideo.py --k 4 --N_k 66 --num_frames 261 --finetune --model_id "th
 
 <details>
 
-<summary> 2× temporal extrapolation </summary>
+<summary> 2× temporal extrapolation (click to expand)</summary>
 
 For training-free: 
 ```bash
