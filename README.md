@@ -138,7 +138,7 @@ To **enhance inference speed** and **reproduce the demos** in our [project page]
 If you find the code useful, please cite
 ```
 @article{zhao2025riflex,
-  title={RIFLEx: A Free Lunch for Length Extrapolation in Video Diffusion Transformers},
+  title={Riflex: A free lunch for length extrapolation in video diffusion transformers},
   author={Zhao, Min and He, Guande and Chen, Yixiao and Zhu, Hongzhou and Li, Chongxuan and Zhu, Jun},
   journal={arXiv preprint arXiv:2502.15894},
   year={2025}
