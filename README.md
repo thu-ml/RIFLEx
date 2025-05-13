@@ -41,6 +41,7 @@ To be continued……
 
 ## 🔥🔥 News
 - **2025.5.1** : RIFLEx is accepted by ICML 2025!
+- **2025.3.17** : RIFLEx is integrated to the official [HunyuanVIdeo-I2V](https://github.com/Tencent/HunyuanVideo-I2V) repository!
 - **2025.3.1** : The code for [CogVideoX-5B](https://github.com/THUDM/CogVideo) and fine-tuned [CogVideoX-RIFLEx](https://huggingface.co/thu-ml/CogVideoX-RIFLEx-diffusers/tree/main) are released.
 - **2025.2.26** RIFLEx is supported in [HunyuanVideoGP](https://github.com/deepbeepmeep/HunyuanVideoGP), where a 10.5 s video at 1280x720 can be generated on an RTX 4090.
 - **2025.2.26** RIFLEx is supported in [ComfyUI-HunyuanVideoWrapper](https://github.com/kijai/ComfyUI-HunyuanVideoWrapper) by [KiJai](https://github.com/kijai).
